@@ -1,99 +1,179 @@
-0body {
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg-color: white;
+    --card-border-color: #ddd;
+    --card-hover-bg-color: rgba(255, 255, 255, 0.9);
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
 }
 
 header {
-    background-color: #007bff;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     text-align: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
+    box-shadow: var(--box-shadow);
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    animation: fadeInDown 1s ease-out;
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    animation: fadeInUp 1s ease-out;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 3rem 2rem;
+    animation: fadeIn 1.5s ease-out;
 }
 
 .app-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .app-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.4s, box-shadow 0.4s;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: transform 0.4s;
+}
+
+.app-card:hover::before {
+    transform: rotate(60deg);
 }
 
 .app-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-hover);
+    background-color: var(--card-hover-bg-color);
 }
 
 .app-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin-bottom: 1rem;
+    transition: transform 0.4s;
+}
+
+.app-card:hover img {
+    transform: rotate(360deg);
 }
 
 .app-card h2 {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
-    padding: 0.5rem;
-    border-radius: 8px 8px 0 0;
+    padding: 0.7rem;
+    border-radius: 10px 10px 0 0;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    width: 100%;
+    transition: background-color 0.4s;
 }
 
 .app-card p {
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
     flex-grow: 1;
+    color: var(--text-color);
 }
 
 .app-card a {
     display: block;
     text-align: center;
-    padding: 0.5rem;
-    background-color: #007bff;
+    padding: 0.7rem;
+    background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 10px 10px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s;
+}
+
+.app-card a:hover::before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .app-card a:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 footer {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
