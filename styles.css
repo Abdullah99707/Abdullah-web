@@ -38,6 +38,20 @@ header p {
     font-size: 1.5rem;
 }
 
+/* Search Bar Styles */
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 /* App Card Styles */
 .app-list {
     display: grid;
