@@ -10,42 +10,47 @@
     --box-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
     overflow-x: hidden;
-}
-
-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
-    box-shadow: var(--box-shadow);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 3rem;
-    animation: fadeInDown 1s ease-out;
-}
-
-header p {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    animation: fadeInUp 1s ease-out;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 2rem;
-    animation: fadeIn 1.5s ease-out;
+    padding: 2rem;
 }
 
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 5px solid #388E3C;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.5rem;
+}
+
+/* App Card Styles */
 .app-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -53,11 +58,11 @@ header p {
 }
 
 .app-card {
-    background-color: var(--card-bg-color);
-    border: 1px solid var(--card-border-color);
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.4s, box-shadow 0.4s;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +81,7 @@ header p {
     height: 200%;
     background: radial-gradient(circle, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(45deg);
-    transition: transform 0.4s;
+    transition: transform 0.3s ease;
 }
 
 .app-card:hover::before {
@@ -84,9 +89,9 @@ header p {
 }
 
 .app-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--box-shadow-hover);
-    background-color: var(--card-hover-bg-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
 }
 
 .app-card img {
@@ -94,41 +99,38 @@ header p {
     height: 100px;
     border-radius: 50%;
     margin-bottom: 1rem;
-    transition: transform 0.4s;
+    transition: transform 0.3s ease;
 }
 
 .app-card:hover img {
-    transform: rotate(360deg);
+    transform: scale(1.1);
 }
 
 .app-card h2 {
-    background-color: var(--primary-color);
+    background-color: #4CAF50;
     color: white;
-    padding: 0.7rem;
+    padding: 0.7rem 1rem;
     border-radius: 10px 10px 0 0;
     margin: 0;
     font-size: 1.4rem;
     width: 100%;
-    transition: background-color 0.4s;
 }
 
 .app-card p {
     padding: 1rem;
     font-size: 1.1rem;
-    flex-grow: 1;
-    color: var(--text-color);
 }
 
 .app-card a {
-    display: block;
-    text-align: center;
-    padding: 0.7rem;
-    background-color: var(--primary-color);
+    display: inline-block;
+    margin-top: auto;
+    padding: 0.7rem 1rem;
+    background-color: #4CAF50;
     color: white;
     text-decoration: none;
     border-radius: 0 0 10px 10px;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -142,7 +144,7 @@ header p {
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
     transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.4s;
+    transition: transform 0.3s ease;
 }
 
 .app-card a:hover::before {
@@ -150,30 +152,17 @@ header p {
 }
 
 .app-card a:hover {
-    background-color: var(--secondary-color);
+    background-color: #388E3C;
     transform: scale(1.05);
 }
 
+/* Footer Styles */
 footer {
-    background-color: var(--primary-color);
+    background-color: #4CAF50;
     color: white;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
-    box-shadow: var(--box-shadow);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #388E3C;
 }
